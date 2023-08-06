@@ -6,6 +6,8 @@ const handlebars = require('express-handlebars');
 const app = express();
 const port = 3000;
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 // HTTP logger: quan sát các log request từ client lên NodeJs server
 app.use(morgan('combined'));
 // Template engine
