@@ -24,9 +24,12 @@ app.use(morgan('combined'));
 /**
  *  sử dụng template engine handlebars
  */
-app.engine('hbs', handlebars.engine({
-    extname: '.hbs'
-}));
+app.engine(
+    'hbs',
+    handlebars.engine({
+        extname: '.hbs',
+    }),
+);
 /**
  *  Đặt cho ứng dụng express sẽ sử dụng view engine là handlebars
  */
@@ -36,4 +39,6 @@ app.set('views', path.join(__dirname, 'resources', 'views'));
 // Route init
 route(app);
 
-app.listen(port, () => console.log(`App listening at http://localhost:${port}`))
+app.listen(port, () =>
+    console.log(`App listening at http://localhost:${port}`),
+);

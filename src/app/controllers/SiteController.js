@@ -5,16 +5,17 @@ class SiteController {
     home(req, res, next) {
         // Mongoose supports both promises and callbacks
         Course.find({})
-            .then(courses => {
+            .then((courses) => {
                 res.render('home', {
-                    courses: mutipleMongooseToObject(courses)
+                    courses: mutipleMongooseToObject(courses),
                 });
-            }).catch(next);
+            })
+            .catch(next);
     }
 
     // [GET] /search
     search(req, res) {
-        res.render('search');
+        res.render("search");
     }
 }
 
