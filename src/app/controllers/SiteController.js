@@ -1,7 +1,15 @@
+const Course = require('../models/Course');
+const { mutipleMongooseToObject } = require('../../util/mogoose');
 class SiteController {
     // [GET] /
-    home(req, res) {
-        res.render('home');
+    home(req, res, next) {
+        // Mongoose supports both promises and callbacks
+        Course.find({})
+            .then(courses => {
+                res.render('home', {
+                    courses: mutipleMongooseToObject(courses)
+                });
+            }).catch(next);
     }
 
     // [GET] /search
@@ -10,4 +18,4 @@ class SiteController {
     }
 }
 
-module.exports = new SiteController;
+module.exports = new SiteController();
